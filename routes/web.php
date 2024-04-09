@@ -20,7 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Posts individuels
+// Posts
+Route::resource('posts', PostController::class);
 Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
 
 // Pages statiques

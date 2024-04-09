@@ -1,6 +1,7 @@
 @foreach ($posts as $post)
     <div class="post">
-        <h2>{{ $post->title }}</h2>
-        <p>{{ $post->description }}</p>
+        <h3>{{ $post->title }}</h3>
+        <p>{{ $post->content }}</p>
+        <a href="{{ route('posts.show', $post->id) }}">Lire plus</a>
     </div>
 @endforeach

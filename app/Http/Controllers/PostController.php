@@ -7,59 +7,55 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $posts = Post::latest()->get();
+        return view('posts.index', compact('posts'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('posts.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->description = $request->description;
+        $post->save();
+    
+        return redirect()->route('posts.index')->with('success', 'Post créé avec succès.');
     }
+    
 
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $post = Post::findOrFail($id); // Trouve le post par ID ou lance une exception si non trouvé
+        return view('posts.show', compact('post')); // Passe les données à la vue
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Post $post)
+        $post = Post::findOrFail($id);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->save();
+    
+        return redirect()->route('posts.index')->with('success', 'Post mis à jour avec succès.');
+    }    
+    public function destroy($id)
     {
-        //
-    }
+        $post = Post::findOrFail($id);
+        $post->delete();
+    
+        return back()->with('success', 'Post supprimé avec succès.');
+    }    
 }

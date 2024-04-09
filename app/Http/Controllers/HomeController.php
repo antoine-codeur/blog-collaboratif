@@ -10,7 +10,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $posts = Post::all(); // Utilisez `latest()->get()` pour les trier par les plus récents
+        $posts = Post::latest()->take(5)->get(); // Récupère les 5 derniers posts
         return view('home', compact('posts'));
     }
     
