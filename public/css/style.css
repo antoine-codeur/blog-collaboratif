@@ -1,0 +1,171 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --bgc: #222;
+    --txt: #eaeaea;
+    /* dash */
+    --bgcdash: #eaeaea;
+    --txtdash: #222;
+    --txtdash-hover: #eaeaea;
+    --icon: #222;
+}
+body {
+    background: var(--bgc);
+    color: var(--txt);
+}
+.style-app {
+    display: flex;
+    flex-direction: row;
+}
+.dashboard {
+    min-width: 101px;
+    transition: min-width 800ms;
+}
+.dashboard .logo a {
+    text-decoration: none;
+    color: #222;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+}
+.dashboard .logo .title {
+    font-size: 20px;
+    display: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--txtdash);
+}
+.dashboard .sidebar {
+    border-radius: 20px;
+    margin: 0.5em;
+    width: 85px;
+    overflow: hidden;
+    position: fixed;
+    background: var(--bgcdash);
+    color: var(--txtdash);
+    padding: 32px 0px;
+    transition: width 800ms;
+}
+.dashboard .menuText {
+    margin-top: 24px;
+}
+.dashboard .menuText p {
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-left: 10px;
+}
+.dashboard .menuList ul {
+    list-style: none;
+    margin-top: 8px;
+    padding: 0 10px;
+
+}
+.dashboard .menuList ul li {
+    cursor: pointer;
+    margin: 4px;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    transition: 0.5s ease;
+}
+.dashboard .menuList ul li a {
+    text-decoration: none;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    flex: 1;
+    color: var(--txtdash);
+}
+.menuList .active,
+.dashboard .menuList ul li:hover {
+    background: var(--bgc);
+}
+.menuList .active .navA,
+.dashboard .menuList ul li:hover .navA {
+    color: var(--txtdash-hover);
+}
+.menuList .active svg,
+.dashboard .menuList ul li:hover svg {
+    fill: var(--txtdash-hover);
+    stroke: var(--txtdash-hover);
+}
+.dashboard .menu-svg {
+    height: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    fill: var(--txtdash);
+    stroke: var(--txtdash);
+}
+#Logo {
+    height: 80px;;
+}
+label {
+    position: fixed;
+    left: 2%;
+    top: 1.5%;
+    font-size: 24px;
+    z-index: 1;
+    cursor: pointer;
+}
+.burgerMenu {
+    width: 24px;
+    stroke: var(--icon);
+    transition: transform 0.5s ease;
+}
+.burgerMenu path{
+    transition: all 0.5s ease;
+}
+#click {
+    display: none;
+}
+#click:checked ~ .dashboard .sidebar {
+    width: 260px;
+}
+#click:checked ~ .dashboard {
+    min-width: 280px;
+}
+.navA {
+    opacity: 0;
+    transition: 0.3s ease;
+}
+#click:checked ~ .dashboard .sidebar .navA {
+    opacity: 1;
+}
+#click:checked ~ .dashboard .sidebar .title {
+    display: flex;
+}
+#click:checked ~ label .burgerMenu .middle {
+    opacity: 0;
+}
+#click:checked ~ label .burgerMenu .top {
+    transform: rotate(45deg) translateX(6px) translateY(-6px);
+}
+#click:checked ~ label .burgerMenu .bottom {
+    transform: rotate(-45deg) translateX(-12px) translateY(-1px);
+}
+
+
+
+.burger { 
+    display: none;
+}
+
+
+/*animations*/
+.hidden {
+    display: none;
+}
+.block {
+    display: block;
+}
+.flex {
+    display: flex;
+}
