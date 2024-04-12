@@ -37,7 +37,7 @@
                     </li>
                     @if (Auth::user()->hasRole('admin'))
                     <li>
-                        <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                        <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
                             <svg class="menu-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="2" width="8" height="8" rx="1"/>
                                 <rect x="14" y="2" width="8" height="8"/>

@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,10 @@ Route::middleware(['auth'])->group(function () {
     // Mes Posts
     Route::get('/my-posts', [PostController::class, 'myPosts'])->name('my.posts');
 });
-
+// Utilisation du middleware 'role'
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('categories', CategoryController::class);
+});
 // Pages statiques accessibles sans authentification
 Route::view('/about', 'about')->name('about');
 Route::view('/legal', 'legal')->name('legal');
