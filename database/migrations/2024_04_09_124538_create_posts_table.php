@@ -17,8 +17,6 @@ class CreatePostsTable extends Migration
     }
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropConstrainedForeignId('user_id');
-        });
+        Schema::dropIfExists('posts');
     }
 }
