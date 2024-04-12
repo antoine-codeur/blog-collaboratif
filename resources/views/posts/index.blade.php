@@ -4,6 +4,7 @@
     @foreach ($posts as $post)
         <div>
             <h2>{{ $post->title }}</h2>
+            <p>Auteur: <b>{{ $post->user->name }}</b></p>
             <span>{{ $post->description }}</span>
             <p>{{ $post->content }}</p>
             <a href="{{ route('posts.show', $post->id) }}">Voir plus</a>

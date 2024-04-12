@@ -1,11 +1,17 @@
 @extends('layouts.app')
 @section('content')
+    <h1>Edit post</h1>
     <form action="{{ route('posts.update', $post->id) }}" method="POST" class="editPost">
         @csrf
         @method('PUT')
+
         <div class="inputBox">
             <label for="title">Titre</label>
             <input type="text" name="title" id="title" value="{{ $post->title }}" required>    
+        </div>
+        <div class="inputBox">
+            <label>Auteur</label>
+            <p><b>{{ $post->user->name }}</b></p>
         </div>
         <div class="inputBox">
             <label for="content">Contenu</label>
@@ -15,6 +21,6 @@
             <label for="description">Description</label>
             <textarea name="description" id="description" required>{{ $post->description }}</textarea>    
         </div>
-        <button type="submit">Modifier</button>
+        <button class="btn" type="submit">Modifier</button>
     </form>
 @endsection

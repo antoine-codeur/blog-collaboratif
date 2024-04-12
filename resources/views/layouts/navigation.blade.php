@@ -22,6 +22,7 @@
             <p>Menu</p>
         </div>
         <!-- Navigation Links Menu -->
+        @if (Auth::check())
         <div class="menuList">
             <nav>
                 <ul>
@@ -34,6 +35,7 @@
                             <div class="navA">{{ __('Dashboard') }}</div>
                         </x-nav-link> 
                     </li>
+                    @if (Auth::user()->hasRole('admin'))
                     <li>
                         <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                             <svg class="menu-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -45,6 +47,8 @@
                             <div class="navA">{{ __('Catégories') }}</div>
                         </x-nav-link>
                     </li>
+                    @else
+                    @endif
                     <li>
                         <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                             <svg class="menu-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.99 512.11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -73,7 +77,13 @@
             </nav>
         </div>
         <div class="menuText">
-            <p>Config</p>
+            @if (Auth::user()->hasRole('admin'))
+                <p>Admin</p>
+            @elseif (Auth::user()->hasRole('user'))
+                <p>Config</p>
+            @else
+                <p>Config</p>
+            @endif
         </div>
         <!-- Navigation Links Config -->
         <div class="menuList">
@@ -107,5 +117,18 @@
                 </ul>
             </nav>
         </div>
+        @else
+        <div class="menuList">
+            <nav>
+                <ul>
+                    <li>
+                        <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                            <div class="navA">{{ __('Login') }}</div>
+                        </x-nav-link>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    @endif
     </div>
 </div>

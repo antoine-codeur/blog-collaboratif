@@ -87,6 +87,7 @@ a {
     transition: 0.5s ease;
 }
 .dashboard .menuList ul li a {
+    min-width: 200px;
     text-decoration: none;
     padding: 12px;
     display: flex;
@@ -182,6 +183,12 @@ a {
 .flex {
     display: flex;
 } */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
 /*Posts*/
 /*Login*/
 .main {
@@ -205,22 +212,30 @@ a {
     color: var(--txt-2);
     border-radius: 20px;
     padding: 30px 40px;
-
 }
 .wrapper h1 {
+    margin-bottom: 30px;
     font-size: 36px;
     text-align: center;
+    color: var(--txt);
 }
-.wrapper .inputBox {
-    height: 50px;
+.inputBox {
     width: 100%;
-    margin: 30px 0;
     position: relative;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
 }
-.wrapper .inputBox input {
-    color: var(--txt-2);
-    width: 100%;
-    height: 100%;
+.inputBox input {
+    height: 50px;
+}
+.inputBox textarea {
+    height: 350px;
+    resize: vertical;
+    min-height: 60px;
+}
+.inputBox input,
+.inputBox textarea {
     background-color: transparent;
     border: none;
     outline: none;
@@ -228,7 +243,30 @@ a {
     border-radius: 40px;
     padding: 20px 45px 20px 20px;
 }
-.wrapper .inputBox input::placeholder {
+.inputBox input::placeholder,
+.inputBox textarea::placeholder {
+    color: var(--txt-2);
+}
+/*Create/Edit*/
+.createPost,
+.editPost {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+.createPost .inputBox,
+.editPost .inputBox {
+    width: calc(50% - 10px);
+}
+.createPost .inputBox input,
+.editPost .inputBox input,
+.createPost .inputBox textarea,
+.editPost .inputBox textarea {
+    color: var(--txt);
+}
+
+.wrapper .inputBox {
     color: var(--txt-2);
 }
 .wrapper .RememberForgot {
@@ -249,7 +287,7 @@ a {
     color: var(--accent-hover);
     text-decoration: underline;
 }
-.wrapper .btn {
+.btn {
     width: 100%;
     height: 45px;
     background: var(--txt);
@@ -261,7 +299,7 @@ a {
     color: var(--txt-2);
     font-weight: 600;
 }
-.wrapper .btn:hover {
+.btn:hover {
     background: var(--accent);
     color: var(--txt);
 }
@@ -279,7 +317,7 @@ a {
     color: var(--accent-hover);
     text-decoration: underline;
 }
-.wrapper .inputBox .login-svg {
+.inputBox .login-svg {
     stroke: var(--accent);
     fill: var(--accent);
     height: 16px;
@@ -289,18 +327,11 @@ a {
     top: 50%;
     transform: translateY(-50%);
 }
-.wrapper .inputBox .login-svg:hover {
+.inputBox .login-svg:hover {
     stroke: var(--accent-hover);
     fill: var(--accent-hover);
 }
-/*Create*/
-.createPost {
-    display: flex;
-}
-/*Edit*/
-.editPost {
-    display: flex;
-}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
