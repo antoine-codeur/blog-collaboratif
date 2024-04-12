@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form action="{{ route('posts.store') }}" method="POST">
+    <form action="{{ route('posts.store') }}" method="POST" class="createPost">
         @csrf
         <label for="title">Titre</label>
         <input type="text" name="title" id="title" required>
@@ -10,4 +10,4 @@
         <textarea name="content" id="content" required></textarea>
         <button type="submit">Publier</button>
     </form>
-    @endsection
+@endsection

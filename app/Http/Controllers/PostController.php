@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-
     public function index()
     {
         $posts = Post::latest()->get();
@@ -20,6 +20,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = new Post();
+        $post->user_id = auth()->id();
         $post->title = $request->title;
         $post->content = $request->content;
         $post->description = $request->description;
@@ -27,15 +28,10 @@ class PostController extends Controller
     
         return redirect()->route('posts.index')->with('success', 'Post créé avec succès.');
     }
-    
-
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
-        $post = Post::findOrFail($id); // Trouve le post par ID ou lance une exception si non trouvé
-        return view('posts.show', compact('post')); // Passe les données à la vue
+        $post = Post::findOrFail($id);
+        return view('posts.show', compact('post'));
     }
     public function edit($id)
     {
@@ -57,5 +53,13 @@ class PostController extends Controller
         $post->delete();
     
         return back()->with('success', 'Post supprimé avec succès.');
-    }    
+    }
+
+    public function myPosts()
+    {
+        $userId = Auth::id();
+        $posts = Post::where('user_id', $userId)->latest()->get();
+    
+        return view('posts.myPosts', compact('posts'));
+    }
 }

@@ -8,6 +8,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('content');
             $table->text('description')->nullable();
@@ -16,6 +17,8 @@ class CreatePostsTable extends Migration
     }
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('user_id');
+        });
     }
 }

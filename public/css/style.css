@@ -5,7 +5,11 @@
 }
 :root{
     --bgc: #222;
+    --bgc-login: #818258;
     --txt: #eaeaea;
+    --txt-2: #222;
+    --accent: #227990;
+    --accent-hover: #b52c36;
     /* dash */
     --bgcdash: #eaeaea;
     --txtdash: #222;
@@ -20,6 +24,13 @@ body {
     display: flex;
     flex-direction: row;
 }
+.content-container{
+    flex: 1;
+}
+a {
+    color: red;
+}
+/*dashboard*/
 .dashboard {
     min-width: 101px;
     transition: min-width 800ms;
@@ -99,15 +110,17 @@ body {
 }
 .dashboard .menu-svg {
     height: 30px;
-    min-width: 30px;
-    max-width: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     fill: var(--txtdash);
     stroke: var(--txtdash);
 }
 #Logo {
     height: 80px;;
 }
-label {
+.click {
     position: fixed;
     left: 2%;
     top: 1.5%;
@@ -160,7 +173,7 @@ label {
 
 
 /*animations*/
-.hidden {
+/* .hidden {
     display: none;
 }
 .block {
@@ -168,4 +181,135 @@ label {
 }
 .flex {
     display: flex;
+} */
+/*Posts*/
+/*Login*/
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.background {
+    position: absolute;
+    background-color: var(--bgc-login);
+    z-index: -1;
+}
+.wrapper {
+    width: 420px;
+    background: transparent;
+    border: solid 2px rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: var(--txt-2);
+    border-radius: 20px;
+    padding: 30px 40px;
+
+}
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+.wrapper .inputBox {
+    height: 50px;
+    width: 100%;
+    margin: 30px 0;
+    position: relative;
+}
+.wrapper .inputBox input {
+    color: var(--txt-2);
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    padding: 20px 45px 20px 20px;
+}
+.wrapper .inputBox input::placeholder {
+    color: var(--txt-2);
+}
+.wrapper .RememberForgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+.wrapper .RememberForgot label input {
+    accent-color: var(--txt-2);
+    margin-right: 3px;
+}
+.wrapper .RememberForgot a {
+    text-decoration: none;
+    color: var(--accent);
+}
+.wrapper .RememberForgot a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+.wrapper .btn {
+    width: 100%;
+    height: 45px;
+    background: var(--txt);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    color: var(--txt-2);
+    font-weight: 600;
+}
+.wrapper .btn:hover {
+    background: var(--accent);
+    color: var(--txt);
+}
+.register {
+    display: flex;
+    justify-content: center;
+    font-size: 14.5px;
+    margin: 20px 0 15px;
+}
+.registerLink {
+    color: var(--accent);
+    text-decoration: none;
+}
+.registerLink:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+.wrapper .inputBox .login-svg {
+    stroke: var(--accent);
+    fill: var(--accent);
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.wrapper .inputBox .login-svg:hover {
+    stroke: var(--accent-hover);
+    fill: var(--accent-hover);
+}
+/*Create*/
+.createPost {
+    display: flex;
+}
+/*Edit*/
+.editPost {
+    display: flex;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    transition: background-color 8160000s ease-in-out 0s, color 8160000s ease-in-out 0s;
+}
+.indexIcon {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
 }

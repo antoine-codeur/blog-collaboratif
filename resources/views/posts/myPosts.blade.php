@@ -1,18 +1,15 @@
 @extends('layouts.app')
+
 @section('content')
-    <h1>Tout les Posts</h1>
+<div class="container">
+    <h1>Mes Posts</h1>
     @foreach ($posts as $post)
         <div>
             <h2>{{ $post->title }}</h2>
-            <span>{{ $post->description }}</span>
-            <p>{{ $post->content }}</p>
+            <p>{{ $post->description }}</p>
             <a href="{{ route('posts.show', $post->id) }}">Voir plus</a>
             <a href="{{ route('posts.edit', $post->id) }}">Modifier</a>
         </div>
-        <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit">Supprimer</button>
-        </form>
     @endforeach
+</div>
 @endsection
