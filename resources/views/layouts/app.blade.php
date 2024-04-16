@@ -13,17 +13,11 @@
     </head>
     <body class="">
         <div class="style-app">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="">
-                    <div class="">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-            <!-- Page Content -->
+            @auth 
+                @include('layouts.navigation')
+            @else
+                <script>window.location.href = "{{ route('login') }}";</script>
+            @endauth
             <main class="content-container">
                 @yield('content')
             </main>

@@ -1,8 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2>
             {{ __('Profile') }}
         </h2>
+        <img src="{{ Auth::user()?->profile_image ? asset('storage/' . Auth::user()?->profile_image) : asset('images/Avatar_default.svg') }}" alt="Profile Image">
     </x-slot>
 
     <div class="py-12">

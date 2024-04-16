@@ -5,34 +5,33 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Page d'accueil
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-// Authentification et routes vérifiées
+// Authenticated routes
 Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->middleware('verified')->name('dashboard'); // Ajout de la vérification d'email sur le dashboard seulement
+    })->middleware('verified')->name('dashboard');
 
-    // Profil utilisateur
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Profile routes
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Routes CRUD pour les posts
+    // CRUD routes for posts
     Route::resource('posts', PostController::class);
 
-    // Mes Posts
+    // My Posts
     Route::get('/my-posts', [PostController::class, 'myPosts'])->name('my.posts');
 });
-// Utilisation du middleware 'role'
+
+// Admin routes protected by 'role:admin' middleware
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('categories', CategoryController::class);
 });
-// Pages statiques accessibles sans authentification
+
+// Static pages accessible without authentication
 Route::view('/about', 'about')->name('about');
 Route::view('/legal', 'legal')->name('legal');
 
-// Inclure les routes d'authentification de Breeze
+// Authentication routes from Breeze
 require __DIR__.'/auth.php';

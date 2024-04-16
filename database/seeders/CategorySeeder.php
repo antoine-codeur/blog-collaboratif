@@ -17,7 +17,7 @@ class CategorySeeder extends Seeder
             Category::create([
                 'name' => $categoryName,
                 'description' => "Description for {$categoryName}",
-                'image' => 'images/category/categoryDefault.jpeg'
+                'image' => 'images/category/categoryDefault.jpeg',
             ]);
         }
     }

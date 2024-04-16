@@ -14,9 +14,9 @@ class UserSeeder extends Seeder
             'name' => 'Admin User',
             'email' => 'admin@example.com',
             'password' => bcrypt('password'),
-            'role' => 'admin'
+            'role' => 'admin',
+            'profile_image' => 'profile_images/Avatar_default.svg',
         ]);
-
         // Créer quelques utilisateurs normaux
         User::factory()->count(10)->create();
     }

@@ -11,7 +11,7 @@
         </div>
         <div class="inputBox">
             <label>Auteur</label>
-            <p><b>{{ $post->user->name }}</b></p>
+            <p><b>{{ $post->user?->name ?? 'Unknown' }}</b></p>
         </div>
         <div class="inputBox">
             <label for="content">Contenu</label>

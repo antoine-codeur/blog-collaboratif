@@ -9,7 +9,7 @@
         </div>
         <div class="inputBox">
             <label>Auteur</label>
-            <p><b>{{ Auth::user()->name }}</b></p>
+            <p><b>{{ Auth::user()?->name }}</b></p>
         </div>
         <div class="inputBox">
             <label for="content">Contenu</label>
